@@ -1,0 +1,30 @@
+﻿@using DemoUpSchoolProject.Models.Entites
+@model List<TblService>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    int count = 0;
+}
+
+<h2>Services</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count+=1;
+        <tr>
+            <td>@count</td>
+            <td>@item.Title</td>
+            <td><a href="/Services/DeleteService/@item.ServicesID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Services/UpdateService/@item.ServicesID" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+<a href="/Services/AddService" class="btn btn-primary">New Service</a>
